@@ -1,44 +1,38 @@
 #Javascript编码基本规范
 
-首先要知道没有人可以强制你怎样去写代码，因为那是你的自由，但是鉴于我们的项目都是多人合作的产物，而且 没人喜欢阅
-读杂乱的代码，所以有个统一的编程风格就是一件非常有价值的一件事，尽管起初你需要配置好编辑器 并且在编程时显得小心
-一些，但总的来说还是值得的。
+首先要知道没有人可以强制你怎样去写代码，因为那是你的自由，但是鉴于我们的项目都是多人合作的产物，而且 没人喜欢阅读杂乱的代码，所以有个统一的编程风格就是一件非常有价值的一件事，尽管起初你需要配置好编辑器 并且在编程时显得小心一些，但总的来说还是值得的。
 
-本文档大致上是[Felix's Node.js Style Guide](http://nodeguide.com/style.html)的一个分支。本着与时俱进的精神，这个
-文档将来还会不断完善，欢迎提交 [issue](https://github.com/AdMaster/js-code-style/issues) 进行讨论。
+本文档大致上是 [Felix's Node.js Style Guide](http://nodeguide.com/style.html)的一个分支。本着与时俱进的精神，这个文档将来还会不断完善，欢迎提交 [issue](https://github.com/AdMaster/js-code-style/issues) 进行讨论。
 
 ## 缩进
 
-采用`2空格`，node核心就是使用的2空格缩进，我认为这能让代码看上去更紧凑些。
+采用**2空格**，node核心就是使用的2空格缩进，我认为这能让代码看上去更紧凑些。
 
 ## 分号
 
-`不要省略分号`，这是一场无休止的战争([semicolon slavery](http://blog.izs.me/post/3393190720/how-this-works),
-[玉柏的分号观](https://github.com/lifesinger/lifesinger.github.com/issues/98))，鉴于大多数程序员还是习惯使用分号，
-出于代价最小化的考虑，我们还是使用分号吧。
+**不要省略分号**，我觉得这没有什么好说的。 `ASI` 这种东西在 js 里面被骂了很多年了。
 
 ## 编辑器
 
-虽然 [BDFL](http://en.wikipedia.org/wiki/BDFL) 一般会对使用 [vim](http://www.vim.org) 开发程序有所青睐，但我们并
-不限制你使用编辑器的自由，不过我们建议你的的编辑器应该具有以下的功能：
+虽然 [BDFL](http://en.wikipedia.org/wiki/BDFL) 一般会对使用 [vim](http://www.vim.org) 开发程序有所青睐，但我们并不限制你使用编辑器的自由，不过我们建议你的的编辑器应该具有以下的功能：
 
 * 语法高亮
 * 行宽限制
 * 行尾空白提示
 * 分屏显示
+* 语法检查器
 
 ## 行尾空白
 
-`避免行尾空白`，就像你每次用完餐都需要刷牙一样，你应该在每次代码提交之前都把行尾的空白清除干净，否则你的粗心大意会
-让维护人员觉得代码简直糟糕透顶、无法直视。
+**避免行尾空白**，就像你每次用完餐都需要刷牙一样，你应该在每次代码提交之前都把行尾的空白清除干净，否则你的粗心大意会让维护人员觉得代码简直糟糕透顶、无法直视。
 
 ## 行宽
 
-`限制80字符`，尽管这几年你的显示器变得越来越大了，但是你的脑瓜并没有，你可以留下更多的空间用于代码的分屏显示，不是吗？
+**限制 80 字符**，尽管这几年你的显示器变得越来越大了，但是你的脑瓜并没有，你可以留下更多的空间用于代码的分屏显示，不是吗？
 
 ## 引用
 
-使用`但引号`，除非你写的是JSON。
+使用**单引号**，除非你写的是JSON。
 
 正确用法:
 
@@ -105,7 +99,7 @@ while (items.length) {
 ```
 ## 变量命名
 
-变量和属性应该总是使用`小写驼峰命名法`。它们应该显得很直管，单字符变量和不常用的名称缩写应该避免。
+变量和属性应该总是使用**小写驼峰命名法**。它们应该显得很直管，单字符变量和不常用的名称缩写应该避免。
 
 正确用法:
 
@@ -121,7 +115,7 @@ var admin_user = d.query('SELECT * FROM users ...');
 
 ## 类名
 
-类名应该使用`大写驼峰命名法`[Variations_and_synonyms](http://en.wikipedia.org/wiki/CamelCase#Variations_and_synonyms)。
+类名应该使用**大写驼峰命名法**[Variations_and_synonyms](http://en.wikipedia.org/wiki/CamelCase#Variations_and_synonyms)。
 
 正确用法:
 
@@ -139,7 +133,7 @@ function bank_Account() {
 
 ## 常量
 
-常量应被声明为一般变量或者静态类变量，全部`使用大写字母`。函数不应该被声明为常量，因为不被编译器支持，而且也不属于标准。
+常量应被声明为一般变量或者静态类变量，全部**使用大写字母**。函数不应该被声明为常量，因为不被编译器支持，而且也不属于标准。
 
 正确用法:
 
@@ -163,7 +157,7 @@ File.fullPermissions = 0777;
 
 ## 对象和数组创建
 
-使用`尾部逗号`并且将短声明放置到一行，仅当解释器不通过时使用引用的键名。
+使用**尾部逗号**并且将短声明放置到一行，仅当解释器不通过时使用引用的键名。
 
 正确用法:
 
@@ -189,7 +183,7 @@ var b = {"good": 'code'
 ## 等号
 
 编程要做的可不是记忆[蠢规则](https://developer.mozilla.org/en/JavaScript/Reference/Operators/Comparison_Operators)。
-使用恒等（三等号）操作符，因为它总是恰如预料的工作。
+必须使用恒等（三等号）操作符，因为它总是恰如预料的工作。
 
 
 正确用法:
@@ -212,7 +206,7 @@ if (a == '') {
 
 ## 原型扩展
 
-永远_不要_扩展任何对象的原型，尤其是原声对象。无尽的深渊召唤着你，如果你不愿意遵守的话。
+永远__不要__扩展任何对象的原型，尤其是原声对象。无尽的深渊召唤着你，如果你不愿意遵守的话。
 
 正确用法:
 
@@ -264,22 +258,22 @@ if (user.isAdmin() || user.isModerator()) {
 
 ## 返回声明
 
-尽量避免使用嵌套if，尽可能早的返回值。
-
+一个 `function` 中应只有一个 `return`
 
 正确用法:
 
 ``` js
 function isPercentage(val) {
+  var ret;
   if (val < 0) {
-    return false;
+    ret = false;
   }
 
   if (val > 100) {
-    return false;
+    ret = true;
   }
 
-  return true;
+  return ret;
 }
 ```
 
@@ -334,18 +328,15 @@ setTimeout(function() {
 ```
 ## 回调函数(仅node)
 
-由于node使用了非阻塞IO技术，所以函数的通常会使用回调函数来返回它们的结果。node核心库的惯例是将回调函数的第一个参数设为可
-选的Error对象来判断返回的状态。
+由于node使用了非阻塞IO技术，所以函数的通常会使用回调函数来返回它们的结果。node核心库的惯例是将回调函数的第一个参数设为可选的Error对象来判断返回的状态。
 
 ## 避免使用的函数
 
-`with` `eval` `Object.freeze` `Object.preventExtension`，尽管一些类库或许会使用这些函数来实现特定的功能，你还是应当最大限
-度的避免它们。
+`with`, `eval`, `Object.freeze`, `Object.preventExtension`，尽管一些类库或许会使用这些函数来实现特定的功能，你还是应当最大限度的避免它们。
 
 ## [set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/set) 和 [get](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/get)
 
-不要使用setters，因为它们导致的问题往往比解决的问题多，你可以随意使用getters，因为它们不会产生什么边际效应，例如为一个集合类
-提供长度属性。
+不要使用setters，因为它们导致的问题往往比解决的问题多，你可以随意使用getters，因为它们不会产生什么边际效应，例如为一个集合类提供长度属性。
 
 ## 事件发送
 
