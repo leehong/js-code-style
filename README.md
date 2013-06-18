@@ -1,8 +1,11 @@
 #Javascript编码基本规范
 
-首先要知道没有人可以强制你怎样去写代码，因为那是你的自由，但是鉴于我们的项目都是多人合作的产物，而且
-没人喜欢阅读杂乱的代码，所以有个统一的编程风格就是一件非常有价值的一件事，尽管起初你需要配置好编辑器
-并且在编程时显得小心一些，但总的来说还是值得的。
+首先要知道没有人可以强制你怎样去写代码，因为那是你的自由，但是鉴于我们的项目都是多人合作的产物，而且 没人喜欢阅
+读杂乱的代码，所以有个统一的编程风格就是一件非常有价值的一件事，尽管起初你需要配置好编辑器 并且在编程时显得小心
+一些，但总的来说还是值得的。
+
+本文档大致上是[Felix's Node.js Style Guide](http://nodeguide.com/style.html)的一个分支。本着与时俱进的精神，这个
+文档将来还会不断完善，欢迎提交 [issue](https://github.com/AdMaster/js-code-style/issues) 进行讨论。
 
 ## 缩进
 
@@ -168,7 +171,7 @@ File.fullPermissions = 0777;
 var a = ['hello', 'world'];
 var b = {
   good: 'code',
-  'is generally': 'pretty',
+  'is generally': 'pretty'
 };
 ```
 
@@ -182,3 +185,178 @@ var b = {"good": 'code'
       , is generally: 'pretty'
       };
 ```
+
+## 等号
+
+编程要做的可不是记忆[蠢规则](https://developer.mozilla.org/en/JavaScript/Reference/Operators/Comparison_Operators)。
+使用恒等（三等号）操作符，因为它总是恰如预料的工作。
+
+
+正确用法:
+
+``` js
+var a = 0;
+if (a === '') {
+  console.log('winning');
+}
+```
+
+错误用法
+
+``` js
+var a = 0;
+if (a == '') {
+  console.log('losing');
+}
+```
+
+## 原型扩展
+
+永远_不要_扩展任何对象的原型，尤其是原声对象。无尽的深渊召唤着你，如果你不愿意遵守的话。
+
+正确用法:
+
+``` js
+var a = [];
+if (!a.length) {
+  console.log('winning');
+}
+```
+
+错误用法
+
+``` js
+Array.prototype.empty = function() {
+  return !this.length;
+}
+
+var a = [];
+if (a.empty()) {
+  console.log('losing');
+}
+```
+
+## 条件语句
+
+任何非显示的条件语句都应该被赋与一个描述变量:
+
+正确用法:
+
+``` js
+var isAuthorized = (user.isAdmin() || user.isModerator());
+if (isAuthorized) {
+  console.log('winning');
+}
+```
+
+错误用法
+
+``` js
+if (user.isAdmin() || user.isModerator()) {
+  console.log('losing');
+}
+```
+
+## 函数长度
+
+让你的函数短点儿。好的函数应该可以放到一张幻灯片里，并且大屋子的最后一排观众都能看的清清楚楚。所以别
+指望他们有超级视力，你应当把你的的函数长度限制到10行以内。
+
+## 返回声明
+
+尽量避免使用嵌套if，尽可能早的返回值。
+
+
+正确用法:
+
+``` js
+function isPercentage(val) {
+  if (val < 0) {
+    return false;
+  }
+
+  if (val > 100) {
+    return false;
+  }
+
+  return true;
+}
+```
+
+错误用法
+
+``` js
+function isPercentage(val) {
+  if (val >= 0) {
+    if (val < 100) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
+}
+```
+
+这与这个特定的例子，它还可以表现的更短一些：
+
+``` js
+function isPercentage(val) {
+  var isInRange = (val >= 0 && val <= 100);
+  return isInRange;
+}
+```
+## 嵌套闭包
+
+可以使用闭包，但是不要嵌套，不然你的代码会变成一坨...
+
+正确用法:
+
+``` js
+setTimeout(function() {
+  client.connect(afterConnect);
+}, 1000);
+
+function afterConnect() {
+  console.log('winning');
+}
+```
+
+错误用法
+
+``` js
+setTimeout(function() {
+  client.connect(function() {
+    console.log('losing');
+  });
+}, 1000);
+```
+## 回调函数(仅node)
+
+由于node使用了非阻塞IO技术，所以函数的通常会使用回调函数来返回它们的结果。node核心库的惯例是将回调函数的第一个参数设为可
+选的Error对象来判断返回的状态。
+
+## 避免使用的函数
+
+`with` `eval` `Object.freeze` `Object.preventExtension`，尽管一些类库或许会使用这些函数来实现特定的功能，你还是应当最大限
+度的避免它们。
+
+## [set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/set) 和 [get](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/get)
+
+不要使用setters，因为它们导致的问题往往比解决的问题多，你可以随意使用getters，因为它们不会产生什么边际效应，例如为一个集合类
+提供长度属性。
+
+## 事件发送
+
+Node.js自带了一个简单的`EventEmitter`类，你可以从`events`模块来导入它：
+
+``` js
+var EventEmitter = require('events').EventEmitter;
+```
+当你需要创建一个复杂类的时候，通常的做法是让它继承`EventEmitter`然后就可以发送事件了。`EventEmitter`不过是一个
+[观察者模式](http://en.wikipedia.org/wiki/Observer_pattern)的简单实现。
+
+然而，我们不应该让对象去监听自己的事件，对象的自我监视是不自然的，它会经常导致不必要的内部实现暴露，并且让你的代码难以追踪。
+
+
