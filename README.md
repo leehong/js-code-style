@@ -4,6 +4,7 @@
 > -- Donald Knuth
 
 任何语言都需要强调编码风格的一致性。只要是团队开发，每个人都以相同的方式编写代码至关重要，这样大家才能方便的看懂和维护对方的代码。
+对于个人来说，需要在一定程度上牺牲个人偏好、个人观点甚至个人英雄主义，你所收获的将是一个能做大事的高效团队。
 
 本文档大致上是 [Felix's Node.js Style Guide](http://nodeguide.com/style.html)的一个分支。本着与时俱进的精神，这个文档将来还会不断完善，欢迎提交 [issue](https://github.com/AdMaster/js-code-style/issues) 进行讨论。
 
