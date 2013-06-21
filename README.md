@@ -7,6 +7,8 @@
 
 本文档大致上是 [Felix's Node.js Style Guide](http://nodeguide.com/style.html)的一个分支。本着与时俱进的精神，这个文档将来还会不断完善，欢迎提交 [issue](https://github.com/AdMaster/js-code-style/issues) 进行讨论。
 
+另外推荐阅读《[编写可维护的JavaScript](http://www.amazon.cn/%E7%BC%96%E5%86%99%E5%8F%AF%E7%BB%B4%E6%8A%A4%E7%9A%84JavaScript-%E6%89%8E%E5%8D%A1%E6%96%AF/dp/B00BQ7RMW0/)》，它所讲述的技巧和技术，可以使JavaScript团队编程从侠义的个人偏好的阴霾走出来，走向真正的高可维护性、高效能和高水准。
+
 ## 缩进
 
 采用**2空格**，node核心就是使用的2空格缩进，我认为这能让代码看上去更紧凑些。
@@ -75,10 +77,10 @@ if (true)
 * 花括号前后应该留有空格
 
   ``` js
-  //错误写法
+  // 错误写法
   if(condition) doSomething();
 
-  //正确写法
+  // 正确写法
   if (condition) {
     doSomething();
   }
@@ -91,6 +93,27 @@ if (true)
 
   //正确写法
   var links = $('#nav li');
+  ```
+
+## 注释风格
+
+* 非行为注释缩进需与被注释代码一致
+
+* 单行注释之前总有一个空行
+
+  ``` js
+  // 这是一个单行注释
+  ```
+
+* 行尾注释之前至少有一个缩进，且行的总长度不超过限制。
+
+* 多行注释之前总有一个空行，且星号后面需要留有一个空格
+
+  ``` js
+  /*
+   * 一段注释
+   * 包含两行文本
+   */
   ```
 
 ## 变量声明
