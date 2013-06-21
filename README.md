@@ -1,4 +1,4 @@
-#Javascript编码基本规范
+#Admaster javascript编码基本规范
 
 > 程序是写给人读的，只是偶尔让计算机执行一下。
 > -- Donald Knuth
@@ -8,6 +8,12 @@
 本文档大致上是 [Felix's Node.js Style Guide](http://nodeguide.com/style.html)的一个分支。本着与时俱进的精神，这个文档将来还会不断完善，欢迎提交 [issue](https://github.com/AdMaster/js-code-style/issues) 进行讨论。
 
 另外推荐阅读《[编写可维护的JavaScript](http://www.amazon.cn/%E7%BC%96%E5%86%99%E5%8F%AF%E7%BB%B4%E6%8A%A4%E7%9A%84JavaScript-%E6%89%8E%E5%8D%A1%E6%96%AF/dp/B00BQ7RMW0/)》，它所讲述的技巧和技术，可以使JavaScript团队编程从侠义的个人偏好的阴霾走出来，走向真正的高可维护性、高效能和高水准。
+
+我们采用jshint作为javascript代码检测工具，文档如下:
+
+* [通用配置文件](https://raw.github.com/AdMaster/js-code-style/master/.jshintrc)
+
+* [jshint使用参考](https://github.com/AdMaster/js-code-style/wiki/jshint%E4%BD%BF%E7%94%A8%E5%8F%82%E8%80%83)
 
 ## 缩进
 
