@@ -74,6 +74,29 @@ if (true)
   console.log('losing');
 }
 ```
+
+## 间隔
+
+* 花括号前后应该留有空格
+
+  ``` js
+  //错误写法
+  if(condition) doSomething();
+
+  //正确写法
+  if (condition) {
+    doSomething();
+  }
+  ```
+* 等号前后应该留有空格
+
+  ``` js
+  //错误写法
+  var links=$('#nav li');
+
+  //正确写法
+  var links = $('#nav li');
+  ```
 ## 变量声明
 
 一次声明一个变量，真能让你的行更容易重排，请忽略[Crockford](http://javascript.crockford.com/code.html)的建议，并将
@@ -334,6 +357,9 @@ setTimeout(function() {
   });
 }, 1000);
 ```
+
+## 
+
 ## 回调函数(仅node)
 
 由于node使用了非阻塞IO技术，所以函数的通常会使用回调函数来返回它们的结果。node核心库的惯例是将回调函数的第一个参数设为可
