@@ -92,6 +92,7 @@ if (true)
   //正确写法
   var links = $('#nav li');
   ```
+
 ## 变量声明
 
 一次声明一个变量，真能让你的行更容易重排，请忽略[Crockford](http://javascript.crockford.com/code.html)的建议，并将
