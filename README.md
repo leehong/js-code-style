@@ -320,51 +320,6 @@ if (user.isAdmin() || user.isModerator()) {
 让你的函数短点儿。好的函数应该可以放到一张幻灯片里，并且大屋子的最后一排观众都能看的清清楚楚。所以别
 指望他们有超级视力，你应当把你的的函数长度限制到10行以内。
 
-## 返回声明
-
-一个 `function` 中应只有一个 `return`
-
-正确用法:
-
-``` js
-function isPercentage(val) {
-  var ret;
-  if (val < 0) {
-    ret = false;
-  }
-
-  if (val > 100) {
-    ret = true;
-  }
-
-  return ret;
-}
-```
-
-错误用法
-
-``` js
-function isPercentage(val) {
-  if (val >= 0) {
-    if (val < 100) {
-      return true;
-    } else {
-      return false;
-    }
-  } else {
-    return false;
-  }
-}
-```
-
-这与这个特定的例子，它还可以表现的更短一些：
-
-``` js
-function isPercentage(val) {
-  var isInRange = (val >= 0 && val <= 100);
-  return isInRange;
-}
-```
 ## 嵌套闭包
 
 可以使用闭包，但是不要嵌套，不然你的代码会变成一坨...
